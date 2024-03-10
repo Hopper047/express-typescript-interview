@@ -4,7 +4,8 @@
   "description": "Example of an Express application written in TypeScript.",
   "main": "src/server.ts",
   "scripts": {
-    "start": "NODE_ENV=development DEBUG=server nodemon -L --exec \"ts-node\" src/server.ts"
+    "start": "NODE_ENV=development DEBUG=server nodemon -L --exec \"ts-node\" src/server.ts",
+    "start_Local_server": "nodemon -L --exec \"ts-node\" src/server.ts"
   },
   "dependencies": {
     "express": "^4.16.0",

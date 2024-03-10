@@ -13,14 +13,37 @@ export const allTeams: Team[] = [
 ];
 export const TeamService = {
   findById(id: number): Team | undefined {
-    return;
+    return allTeams.find((ele) => ele.id == id);
   },
   findAll(): Team[] {
-    return [];
+    return allTeams;
   },
   findByNameMatch(text: string): Team[] {
-    return [];
+    return allTeams.filter(
+      (ele) => ele.name.toLocaleLowerCase() == text.toLocaleLowerCase()
+    );
   },
-  add(team: Team): void {},
-  remove(id: number): void {},
+  add(team: Team[]): boolean {
+    return allTeams.length + team.length == allTeams.push(...team);
+  },
+  remove(id: number): boolean {
+    const beforeDelete = allTeams.length;
+    allTeams.filter((ele, index) => {
+      if (ele.id == id) {
+        allTeams.splice(index, 1);
+        return;
+      }
+    });
+    const afterDelete = allTeams.length;
+    return beforeDelete - 1 == afterDelete ? true : false;
+  },
+  update(team: Team): boolean {
+    const isDataUpdated = allTeams.filter((ele) => {
+      if (ele.id == team.id) {
+        ele.name = team.name;
+        return true;
+      }
+    });
+    return isDataUpdated.length ? true : false;
+  },
 };
